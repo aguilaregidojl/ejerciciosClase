@@ -21,6 +21,7 @@ public class sumatorio {
         System.out.println("Ingrese segundo valor");
         num2 = teclado.nextInt();
         suma = num1 + num2;
+        //Convertimos los números a float para sacar el promedio con decimales
         promedio = ((float) num1 + (float) num2) / 2;
         System.out.print("La suma de los dos valores es:");
         System.out.println(suma);
