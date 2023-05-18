@@ -8,10 +8,9 @@ import java.util.Scanner;
 
 /**
  * Programa para calcular si un número es o no es un número primo.
- * 
+ *
  * @author Jose Luis Aguilar Egido
  */
-
 public class Primos {
 
     public static void main(String[] args) {

@@ -8,7 +8,7 @@ package ejerciciosClase;
  *
  * @author java
  */
-public class NewClass1 {
+public class numerosAmigos2 {
 
     public static void main(String[] args) {
         //Declaramos las variables
@@ -17,7 +17,7 @@ public class NewClass1 {
         int contadoramigos = 0;
         int numero1 = 1;
 
-        while (contadoramigos <3) {
+        while (contadoramigos < 3) {
 
             int divsuma1 = 0;
             int divsuma2 = 0;
