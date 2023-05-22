@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author proof
  */
-public class ejerciciosArrays {
+public class ejercicioArrays {
 
     public static void main(String[] args) {
         //*************************Ejercicio 1**********************************
@@ -56,34 +56,31 @@ public class ejerciciosArrays {
         int[] numero;
         numero = new int[10];
         System.out.println("Introduce el primer número del array: ");
-        numero[0]= teclado.nextInt();
+        numero[0] = teclado.nextInt();
         System.out.println("Introduce el segundo número del array: ");
-        numero[1]= teclado.nextInt();
+        numero[1] = teclado.nextInt();
         System.out.println("Introduce el tercer número del array: ");
-        numero[2]= teclado.nextInt();
+        numero[2] = teclado.nextInt();
         System.out.println("Introduce el cuarto número del array: ");
-        numero[3]= teclado.nextInt();
+        numero[3] = teclado.nextInt();
         System.out.println("Introduce el quinto número del array: ");
-        numero[4]= teclado.nextInt();
+        numero[4] = teclado.nextInt();
         System.out.println("Introduce el sexto número del array: ");
-        numero[5]= teclado.nextInt();
+        numero[5] = teclado.nextInt();
         System.out.println("Introduce el séptimo número del array: ");
-        numero[6]= teclado.nextInt();
+        numero[6] = teclado.nextInt();
         System.out.println("Introduce el octavo número del array: ");
-        numero[7]= teclado.nextInt();
+        numero[7] = teclado.nextInt();
         System.out.println("Introduce el noveno número del array: ");
-        numero[8]= teclado.nextInt();
+        numero[8] = teclado.nextInt();
         System.out.println("Introduce el décimo y último número del array: ");
-        numero[9]= teclado.nextInt();
+        numero[9] = teclado.nextInt();
         System.out.println("Los valores del array 'numero' son:");
         System.out.print(numero[9] + ", " + numero[8] + ", " + numero[7] + ", ");
         System.out.print(numero[6] + ", " + numero[5] + ", " + numero[4] + ", ");
         System.out.print(numero[3] + ", " + numero[2] + ", " + numero[1] + ", ");
         System.out.print(numero[0]);
-        
-        //*************************Ejercicio 4**********************************
-        
-        
 
+        //*************************Ejercicio 4**********************************
     }
 }
