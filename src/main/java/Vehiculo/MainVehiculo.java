@@ -6,13 +6,14 @@ package Vehiculo;
 
 import java.util.Scanner;
 
+
 /**
  *
  * @author Jose Luis Aguilar Egido
  */
 public class MainVehiculo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         int opcion = 0;
         int km;
 
@@ -39,9 +40,12 @@ public class MainVehiculo {
                     System.out.println("¿Cuántos kilómetros avanzas?");
                     km = teclado.nextInt();
                     bici1.avanzar(km);
+                    Thread.sleep(1000);
                 }
-                case 2 ->
+                case 2 -> {
                     bici1.hacerCaballito();
+                    Thread.sleep(1000);
+                }
                 case 3 -> {
                     System.out.println("¿Cuántos kilómetros avanzas?");
                     km = teclado.nextInt();
