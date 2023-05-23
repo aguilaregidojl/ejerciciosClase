@@ -4,19 +4,33 @@
  */
 package ejAnimales;
 
+import java.util.Scanner;
+
 /**
  *
  * @author java
  */
 public abstract class Animal {
-    
+
+    Scanner teclado = new Scanner(System.in);
+
     //Atributos
-    int edad;
-    String especie;
-    Sexo sexo;
-    
+    protected int edad;
+    protected String especie;
+    protected String sexo;
+
     //Atributos de clase
-    int totalAnimal = 0;
-    
-    
+    static int totalAnimales = 0;
+
+    //Constructor
+    public Animal(String especie, String sexo) {
+        this.especie = especie;
+        this.sexo = sexo;
+        System.out.println("¿Qué edad tiene?");
+        int e = teclado.nextInt();
+        this.edad = e;
+        totalAnimales++;
+
+    }
+
 }

@@ -8,6 +8,21 @@ package ejAnimales;
  *
  * @author java
  */
-public class Persona extends Animal {
+public class Persona {
+    //Atributos
+    String nombre;
+    String nacionalidad;
+    String genero;
+    
+    //Atributo de clase
+    static int totalPersonas = 0;
+    
+    //Constructor
+    public Persona(String nombre, String nacionalidad, String genero) {
+        super();
+        this.nombre = nombre;
+        this.nacionalidad = nacionalidad;
+        this.genero = genero;
+    }
     
 }
