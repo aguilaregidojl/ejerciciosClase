@@ -9,5 +9,14 @@ package ejAnimales;
  * @author java
  */
 public class Perro {
+    //Atributos
+    String nombre;
+    String raza;
+    boolean chip;
+    
+    //Atributos de clase
+    static int totalPerros = 0;
+    
+    
     
 }
