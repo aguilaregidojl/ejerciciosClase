@@ -8,15 +8,9 @@ package ejAnimales;
  *
  * @author java
  */
-public abstract class Animal {
-    
-    //Atributos
-    int edad;
-    String especie;
-    Sexo sexo;
-    
-    //Atributos de clase
-    int totalAnimal = 0;
-    
+public class Main {
+    public static void main (String[] args) {
+        
+    }
     
 }
