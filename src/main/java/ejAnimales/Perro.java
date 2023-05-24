@@ -8,15 +8,23 @@ package ejAnimales;
  *
  * @author java
  */
-public class Perro {
+public class Perro extends Animal {
+
     //Atributos
-    String nombre;
+    String sexo;
     String raza;
     boolean chip;
-    
+
     //Atributos de clase
     static int totalPerros = 0;
-    
-    
-    
+
+    //Constructor
+    public Perro(int edad, String especie, String nombre, String sexo, String raza, boolean chip) {
+        super(edad, especie, nombre);
+        this.sexo = sexo;
+        this.raza = raza;
+        this.chip = chip;
+
+    }
+
 }

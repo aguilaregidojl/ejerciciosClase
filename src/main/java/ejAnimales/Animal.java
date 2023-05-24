@@ -17,16 +17,16 @@ public abstract class Animal {
     //Atributos
     protected int edad;
     protected String especie;
-    protected String sexo;
+    protected String nombre;
 
     //Atributos de clase
     protected static int totalAnimales = 0;
 
     //Constructor
-    public Animal(int edad, String especie, String sexo) {
+    public Animal(int edad, String especie, String nombre) {
         this.edad = edad;
         this.especie = especie;
-        this.sexo = sexo;
+        this.nombre = nombre;
         System.out.println("¿Qué edad tiene?");
         int e = teclado.nextInt();
         this.edad = e;
@@ -34,4 +34,7 @@ public abstract class Animal {
 
     }
 
+    public int compareTo(Animal otroAnimal) {
+        return this.nombre.compareTo(otroAnimal.nombre);
+    }
 }
