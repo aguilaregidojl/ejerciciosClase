@@ -31,12 +31,12 @@ public class Main {
         String nombre6 = teclado.nextLine();
 
         //Generamos los objetos de perros y personas
-        Perro perro1 = new Perro(3, "Husky", "Tango", "Macho", "Canis familiaris", true);
-        Perro perro2 = new Perro(5, "Terrier", "Runa", "Hembra", "Canis familiaris", false);
-        Perro perro3 = new Perro(7, "Caniche", "Milu", "Macho", "Canis familiaris", true);
-        Persona persona1 = new Persona(35, "Homo sapiens", "Fernando", "Rodríguez", "España", "Masculino");
-        Persona persona2 = new Persona(23, "Homo sapiens", "Helen", "Johnson", "Inglaterra", "No binario");
-        Persona persona3 = new Persona(40, "Homo sapiens", "Fermín", "Gómez", "Argentina", "Masculino");
+        Perro perro1 = new Perro(3, "Husky", nombre1, "Macho", "Canis familiaris", true);
+        Perro perro2 = new Perro(5, "Terrier", nombre2, "Hembra", "Canis familiaris", false);
+        Perro perro3 = new Perro(7, "Caniche", nombre3, "Macho", "Canis familiaris", true);
+        Persona persona1 = new Persona(35, "Homo sapiens", nombre4, "Rodríguez", "España", "Masculino");
+        Persona persona2 = new Persona(23, "Homo sapiens", nombre5, "Johnson", "Inglaterra", "No binario");
+        Persona persona3 = new Persona(40, "Homo sapiens", nombre6, "Gómez", "Argentina", "Masculino");
         
         System.out.println("Ahora ordenaré los nombres: ");
         System.out.println(" ");
