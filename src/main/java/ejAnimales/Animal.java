@@ -20,10 +20,11 @@ public abstract class Animal {
     protected String sexo;
 
     //Atributos de clase
-    static int totalAnimales = 0;
+    protected static int totalAnimales = 0;
 
     //Constructor
-    public Animal(String especie, String sexo) {
+    public Animal(int edad, String especie, String sexo) {
+        this.edad = edad;
         this.especie = especie;
         this.sexo = sexo;
         System.out.println("¿Qué edad tiene?");
