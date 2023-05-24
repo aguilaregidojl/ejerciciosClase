@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author java
  */
-public abstract class Animal {
+public abstract class Animal implements Comparable<Animal> {
 
     Scanner teclado = new Scanner(System.in);
 
@@ -27,13 +27,11 @@ public abstract class Animal {
         this.edad = edad;
         this.especie = especie;
         this.nombre = nombre;
-        System.out.println("¿Qué edad tiene?");
-        int e = teclado.nextInt();
-        this.edad = e;
         totalAnimales++;
 
     }
 
+    @Override
     public int compareTo(Animal otroAnimal) {
         return this.nombre.compareTo(otroAnimal.nombre);
     }
