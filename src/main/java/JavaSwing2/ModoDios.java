@@ -14,10 +14,12 @@ import javax.swing.JFrame;
 public class ModoDios extends JFrame {
     
     int tipo;
-    String
     
-    public tipoComponente(int tipo) {
-        return switch
+    public String tipoComponente(int tipo) {
+        if (tipo==0) {
+            return "String";
+        }
+        return "Error";
     }
 
     public static void main(String[] args) {
@@ -31,7 +33,7 @@ public class ModoDios extends JFrame {
         System.out.println("Introduce un número de componentes para el formulario:");
         componentes = teclado.nextInt();
 
-        while (opcion != 6 && contador != componentes) {
+        while (opcion != 6 || contador != componentes) {
             System.out.println("¿Qué tipo de dato irá en el componente " + contador + " ?");
             System.out.println("1. Cadena de texto (String)");
             System.out.println("2. Número entero (Int)");
