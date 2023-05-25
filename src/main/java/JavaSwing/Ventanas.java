@@ -39,12 +39,12 @@ public class Ventanas extends JFrame implements ActionListener {
         //this.label = label;
         if (label == 1) {
             label1 = new JLabel("Has pulsado el botón 1");
-            label1.setBounds(0, 0, 200, 100);
+            label1.setBounds(100, 0, 200, 100);
             add(label1);
         }
         if (label == 2) {
             label2 = new JLabel("Has pulsado el botón 2");
-            label2.setBounds(50, 50, 200, 100);
+            label2.setBounds(100, 0, 200, 100);
             add(label2);
         }
     }
