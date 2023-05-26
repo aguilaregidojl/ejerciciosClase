@@ -10,5 +10,14 @@
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
     </properties>
+    
+    <dependencies>
+         <!-- MySql 5.5 Connector -->   
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.33</version>
+    </dependency> 
+    </dependencies>
     <name>EjerciciosClase</name>
 </project>
