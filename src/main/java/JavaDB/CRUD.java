@@ -3,12 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package JavaDB;
+import static JavaDB.DB.getConection;
+import java.awt.HeadlessException;
+import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author java
  */
 public class CRUD extends javax.swing.JFrame {
+    
+    private void limpiarCajas() {
+        cname.setText(null);
+        csurname.setText(null);
+    }
 
     /**
      * Creates new form CRUD
@@ -28,15 +37,21 @@ public class CRUD extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
+        jPanel1 = new javax.swing.JPanel();
         Menu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        botonCrear = new javax.swing.JButton();
+        botonLeer = new javax.swing.JButton();
+        botonActualizar = new javax.swing.JButton();
+        botonBorrar = new javax.swing.JButton();
+        panelCrear = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        cname = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        csurname = new javax.swing.JTextField();
+        botonGuardarCrear = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        botonVolverCrear = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -55,83 +70,142 @@ public class CRUD extends javax.swing.JFrame {
         setTitle("CRUD MySQL");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocation(new java.awt.Point(0, 0));
-        setPreferredSize(new java.awt.Dimension(960, 540));
-
-        jLabel1.setText("¿Qué quieres hacer?");
-        Menu.add(jLabel1);
-
-        jButton1.setText("Crear");
-        jButton1.setMaximumSize(new java.awt.Dimension(83, 22));
-        jButton1.setMinimumSize(new java.awt.Dimension(83, 22));
-        jButton1.setPreferredSize(new java.awt.Dimension(83, 22));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        Menu.add(jButton1);
-
-        jButton2.setText("Leer");
-        jButton2.setMaximumSize(new java.awt.Dimension(83, 22));
-        jButton2.setMinimumSize(new java.awt.Dimension(83, 22));
-        jButton2.setPreferredSize(new java.awt.Dimension(83, 22));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        Menu.add(jButton2);
-
-        jButton4.setText("Actualizar");
-        jButton4.setMaximumSize(new java.awt.Dimension(83, 22));
-        jButton4.setMinimumSize(new java.awt.Dimension(83, 22));
-        jButton4.setPreferredSize(new java.awt.Dimension(83, 22));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        Menu.add(jButton4);
-
-        jButton5.setText("Borrar");
-        jButton5.setMaximumSize(new java.awt.Dimension(83, 22));
-        jButton5.setMinimumSize(new java.awt.Dimension(83, 22));
-        jButton5.setPreferredSize(new java.awt.Dimension(83, 22));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        Menu.add(jButton5);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(362, Short.MAX_VALUE))
+            .addGap(0, 473, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGap(0, 233, Short.MAX_VALUE)
+        );
+
+        jLabel1.setText("¿Qué quieres hacer?");
+        Menu.add(jLabel1);
+
+        botonCrear.setText("Crear");
+        botonCrear.setMaximumSize(new java.awt.Dimension(83, 22));
+        botonCrear.setMinimumSize(new java.awt.Dimension(83, 22));
+        botonCrear.setPreferredSize(new java.awt.Dimension(83, 22));
+        botonCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearActionPerformed(evt);
+            }
+        });
+        Menu.add(botonCrear);
+
+        botonLeer.setText("Leer");
+        botonLeer.setMaximumSize(new java.awt.Dimension(83, 22));
+        botonLeer.setMinimumSize(new java.awt.Dimension(83, 22));
+        botonLeer.setPreferredSize(new java.awt.Dimension(83, 22));
+        botonLeer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonLeerActionPerformed(evt);
+            }
+        });
+        Menu.add(botonLeer);
+
+        botonActualizar.setText("Actualizar");
+        botonActualizar.setMaximumSize(new java.awt.Dimension(83, 22));
+        botonActualizar.setMinimumSize(new java.awt.Dimension(83, 22));
+        botonActualizar.setPreferredSize(new java.awt.Dimension(83, 22));
+        botonActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonActualizarActionPerformed(evt);
+            }
+        });
+        Menu.add(botonActualizar);
+
+        botonBorrar.setText("Borrar");
+        botonBorrar.setMaximumSize(new java.awt.Dimension(83, 22));
+        botonBorrar.setMinimumSize(new java.awt.Dimension(83, 22));
+        botonBorrar.setPreferredSize(new java.awt.Dimension(83, 22));
+        botonBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBorrarActionPerformed(evt);
+            }
+        });
+        Menu.add(botonBorrar);
+
+        panelCrear.setVisible(false);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Nombre:");
+
+        cname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cnameActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Apellido:");
+
+        csurname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                csurnameActionPerformed(evt);
+            }
+        });
+
+        botonGuardarCrear.setText("Guardar");
+        botonGuardarCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarCrearActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setText("Añadir nuevo Actor");
+
+        botonVolverCrear.setText("Cancelar");
+        botonVolverCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverCrearActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelCrearLayout = new javax.swing.GroupLayout(panelCrear);
+        panelCrear.setLayout(panelCrearLayout);
+        panelCrearLayout.setHorizontalGroup(
+            panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCrearLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel4)
+                    .addGroup(panelCrearLayout.createSequentialGroup()
+                        .addComponent(botonGuardarCrear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                        .addComponent(botonVolverCrear))
+                    .addGroup(panelCrearLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(12, 12, 12)
+                        .addComponent(cname, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCrearLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(13, 13, 13)
+                        .addComponent(csurname, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        panelCrearLayout.setVerticalGroup(
+            panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCrearLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(cname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(csurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonGuardarCrear)
+                    .addComponent(botonVolverCrear))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -141,41 +215,88 @@ public class CRUD extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(341, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(panelCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_botonActualizarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonLeerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLeerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonLeerActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
+        // Botón Crear
+        
+        panelCrear.setVisible(true);
+        
+        
+    }//GEN-LAST:event_botonCrearActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void botonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_botonBorrarActionPerformed
+
+    private void cnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cnameActionPerformed
+
+    private void csurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csurnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_csurnameActionPerformed
+
+    private void botonGuardarCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarCrearActionPerformed
+        // Botón Guardar en Crear
+
+        Connection con;
+        PreparedStatement ps = null;
+
+        try {
+            con = getConection();
+            ps = con.prepareStatement("INSERT INTO actor (first_name, last_name) VALUES(?,?) ");
+            ps.setString(1, cname.getText());
+            ps.setString(2, csurname.getText());
+
+            int res = ps.executeUpdate();
+
+            if (res > 0) {
+                JOptionPane.showMessageDialog(null, "Actor guardado");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al Crear Actor");
+            }
+
+            limpiarCajas();
+            con.close();
+
+        } catch (HeadlessException | SQLException e) {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_botonGuardarCrearActionPerformed
+
+    private void botonVolverCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverCrearActionPerformed
+        // Botón Volver:
+    }//GEN-LAST:event_botonVolverCrearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,20 +330,27 @@ public class CRUD extends javax.swing.JFrame {
             public void run() {
                 new CRUD().setVisible(true);
             }
+            
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Menu;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton botonActualizar;
+    private javax.swing.JButton botonBorrar;
+    private javax.swing.JButton botonCrear;
+    private javax.swing.JButton botonGuardarCrear;
+    private javax.swing.JButton botonLeer;
+    private javax.swing.JButton botonVolverCrear;
+    private javax.swing.JTextField cname;
+    private javax.swing.JTextField csurname;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JPanel panelCrear;
     // End of variables declaration//GEN-END:variables
 }
