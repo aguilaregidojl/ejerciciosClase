@@ -35,8 +35,6 @@ public class CRUD extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jToolBar1 = new javax.swing.JToolBar();
         Menu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         botonCrear = new javax.swing.JButton();
@@ -52,19 +50,6 @@ public class CRUD extends javax.swing.JFrame {
         botonGuardarCrear = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         botonVolverCrear = new javax.swing.JButton();
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        jToolBar1.setRollover(true);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CRUD MySQL");
@@ -197,7 +182,7 @@ public class CRUD extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.setLayer(panelCrear, javax.swing.JLayeredPane.PALETTE_LAYER);
+        jLayeredPane1.setLayer(panelCrear, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -213,7 +198,7 @@ public class CRUD extends javax.swing.JFrame {
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(374, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -235,7 +220,7 @@ public class CRUD extends javax.swing.JFrame {
                     .addComponent(jLayeredPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 254, Short.MAX_VALUE)))
+                        .addGap(0, 257, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -354,8 +339,6 @@ public class CRUD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JPanel panelCrear;
     // End of variables declaration//GEN-END:variables
 }
