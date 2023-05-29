@@ -7,6 +7,7 @@ import static JavaDB.DB.getConection;
 import java.awt.HeadlessException;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,12 +19,14 @@ public class CRUD extends javax.swing.JFrame {
         cname.setText(null);
         csurname.setText(null);
     }
+   
 
     /**
      * Creates new form CRUD
      */
     public CRUD() {
         initComponents();
+        listar();
     }
 
     /**
@@ -38,7 +41,6 @@ public class CRUD extends javax.swing.JFrame {
         Menu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         botonCrear = new javax.swing.JButton();
-        botonLeer = new javax.swing.JButton();
         botonActualizar = new javax.swing.JButton();
         botonBorrar = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
@@ -50,11 +52,15 @@ public class CRUD extends javax.swing.JFrame {
         botonGuardarCrear = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         botonVolverCrear = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaDatos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CRUD MySQL");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocation(new java.awt.Point(0, 0));
+        setPreferredSize(new java.awt.Dimension(960, 540));
+        getContentPane().setLayout(null);
 
         jLabel1.setText("¿Qué quieres hacer?");
         Menu.add(jLabel1);
@@ -69,17 +75,6 @@ public class CRUD extends javax.swing.JFrame {
             }
         });
         Menu.add(botonCrear);
-
-        botonLeer.setText("Leer");
-        botonLeer.setMaximumSize(new java.awt.Dimension(83, 22));
-        botonLeer.setMinimumSize(new java.awt.Dimension(83, 22));
-        botonLeer.setPreferredSize(new java.awt.Dimension(83, 22));
-        botonLeer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonLeerActionPerformed(evt);
-            }
-        });
-        Menu.add(botonLeer);
 
         botonActualizar.setText("Actualizar");
         botonActualizar.setMaximumSize(new java.awt.Dimension(83, 22));
@@ -102,6 +97,9 @@ public class CRUD extends javax.swing.JFrame {
             }
         });
         Menu.add(botonBorrar);
+
+        getContentPane().add(Menu);
+        Menu.setBounds(6, 6, 122, 120);
 
         panelCrear.setVisible(false);
 
@@ -182,47 +180,29 @@ public class CRUD extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.setLayer(panelCrear, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.add(panelCrear);
+        panelCrear.setBounds(6, 6, 237, 160);
 
-        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
-        jLayeredPane1.setLayout(jLayeredPane1Layout);
-        jLayeredPane1Layout.setHorizontalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(621, Short.MAX_VALUE))
-        );
-        jLayeredPane1Layout.setVerticalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(374, Short.MAX_VALUE))
-        );
+        TablaDatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLayeredPane1)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLayeredPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 257, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+            },
+            new String [] {
+                "ID", "Nombre", "Apellido"
+            }
+        ));
+        jScrollPane1.setViewportView(TablaDatos);
+        if (TablaDatos.getColumnModel().getColumnCount() > 0) {
+            TablaDatos.getColumnModel().getColumn(0).setMinWidth(50);
+            TablaDatos.getColumnModel().getColumn(0).setPreferredWidth(50);
+            TablaDatos.getColumnModel().getColumn(0).setMaxWidth(50);
+        }
+
+        jLayeredPane1.add(jScrollPane1);
+        jScrollPane1.setBounds(260, 0, 600, 530);
+
+        getContentPane().add(jLayeredPane1);
+        jLayeredPane1.setBounds(134, 6, 864, 531);
 
         pack();
         setLocationRelativeTo(null);
@@ -231,10 +211,6 @@ public class CRUD extends javax.swing.JFrame {
     private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonActualizarActionPerformed
-
-    private void botonLeerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLeerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonLeerActionPerformed
 
     private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
         // Botón Crear
@@ -261,6 +237,7 @@ public class CRUD extends javax.swing.JFrame {
 
         Connection con;
         PreparedStatement ps = null;
+        DefaultTableModel modelo = (DefaultTableModel) TablaDatos.getModel();
 
         try {
             con = getConection();
@@ -275,8 +252,10 @@ public class CRUD extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Error al Crear Actor");
             }
+            TablaDatos.setModel(modelo);
 
             limpiarCajas();
+            modelo.fireTableDataChanged();
             con.close();
 
         } catch (HeadlessException | SQLException e) {
@@ -323,14 +302,40 @@ public class CRUD extends javax.swing.JFrame {
             
         });
     }
+    
+        private void listar() {
+
+        Connection con;
+        Statement st;
+        DefaultTableModel modelo;
+        ResultSet rs;
+        int id;
+        String sql = "SELECT * FROM actor";
+        try {
+            con = getConection();
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
+            Object[] actor = new Object[3];
+            modelo = (DefaultTableModel) TablaDatos.getModel();
+
+            while (rs.next()) {
+                actor[0] = rs.getInt("actor_id");
+                actor[1] = rs.getString("first_name");
+                actor[2] = rs.getString("last_name");
+                modelo.addRow(actor);
+            }
+            TablaDatos.setModel(modelo);
+        } catch (Exception e) {
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Menu;
+    private javax.swing.JTable TablaDatos;
     private javax.swing.JButton botonActualizar;
     private javax.swing.JButton botonBorrar;
     private javax.swing.JButton botonCrear;
     private javax.swing.JButton botonGuardarCrear;
-    private javax.swing.JButton botonLeer;
     private javax.swing.JButton botonVolverCrear;
     private javax.swing.JTextField cname;
     private javax.swing.JTextField csurname;
@@ -339,6 +344,7 @@ public class CRUD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelCrear;
     // End of variables declaration//GEN-END:variables
 }
