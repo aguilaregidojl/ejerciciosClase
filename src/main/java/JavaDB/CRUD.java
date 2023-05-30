@@ -89,7 +89,7 @@ public class CRUD extends javax.swing.JFrame {
         setTitle("CRUD MySQL");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocation(new java.awt.Point(0, 0));
-        setPreferredSize(new java.awt.Dimension(960, 540));
+        setPreferredSize(new java.awt.Dimension(730, 475));
         getContentPane().setLayout(null);
 
         jLabel1.setText("¿Qué quieres hacer?");
@@ -132,108 +132,74 @@ public class CRUD extends javax.swing.JFrame {
         Menu.setBounds(6, 6, 122, 120);
 
         panelActualizar.setVisible(false);
+        panelActualizar.setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Nombre:");
+        panelActualizar.add(jLabel3);
+        jLabel3.setBounds(6, 77, 53, 20);
 
         cnameact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cnameactActionPerformed(evt);
             }
         });
+        panelActualizar.add(cnameact);
+        cnameact.setBounds(71, 77, 156, 22);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Apellido:");
+        panelActualizar.add(jLabel2);
+        jLabel2.setBounds(6, 105, 53, 20);
 
         csurnameact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 csurnameactActionPerformed(evt);
             }
         });
+        panelActualizar.add(csurnameact);
+        csurnameact.setBounds(71, 105, 156, 22);
 
         botonGuardarActualizar.setText("Guardar");
+        botonGuardarActualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonGuardarActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGuardarActualizarActionPerformed(evt);
             }
         });
+        panelActualizar.add(botonGuardarActualizar);
+        botonGuardarActualizar.setBounds(6, 145, 80, 22);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Actualizar Actor");
+        panelActualizar.add(jLabel4);
+        jLabel4.setBounds(49, 6, 138, 25);
 
         botonVolverActualizar.setText("Cancelar");
+        botonVolverActualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonVolverActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVolverActualizarActionPerformed(evt);
             }
         });
+        panelActualizar.add(botonVolverActualizar);
+        botonVolverActualizar.setBounds(155, 145, 80, 22);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("ID:");
+        panelActualizar.add(jLabel9);
+        jLabel9.setBounds(6, 49, 53, 20);
 
         cidact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cidactActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelActualizarLayout = new javax.swing.GroupLayout(panelActualizar);
-        panelActualizar.setLayout(panelActualizarLayout);
-        panelActualizarLayout.setHorizontalGroup(
-            panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelActualizarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, panelActualizarLayout.createSequentialGroup()
-                        .addComponent(botonGuardarActualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonVolverActualizar))
-                    .addGroup(panelActualizarLayout.createSequentialGroup()
-                        .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(csurnameact, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cnameact, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cidact, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, panelActualizarLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel4)
-                        .addGap(44, 44, 44)))
-                .addContainerGap())
-        );
-
-        panelActualizarLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel9});
-
-        panelActualizarLayout.setVerticalGroup(
-            panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelActualizarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(cidact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cnameact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(csurnameact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonGuardarActualizar)
-                    .addComponent(botonVolverActualizar))
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
+        panelActualizar.add(cidact);
+        cidact.setBounds(71, 49, 37, 22);
 
         jLayeredPane1.add(panelActualizar);
         panelActualizar.setBounds(6, 6, 233, 200);
@@ -256,181 +222,130 @@ public class CRUD extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TablaDatos);
         if (TablaDatos.getColumnModel().getColumnCount() > 0) {
-            TablaDatos.getColumnModel().getColumn(0).setMinWidth(50);
+            TablaDatos.getColumnModel().getColumn(0).setResizable(false);
             TablaDatos.getColumnModel().getColumn(0).setPreferredWidth(50);
-            TablaDatos.getColumnModel().getColumn(0).setMaxWidth(50);
+            TablaDatos.getColumnModel().getColumn(1).setPreferredWidth(200);
+            TablaDatos.getColumnModel().getColumn(2).setPreferredWidth(200);
         }
 
         jLayeredPane1.add(jScrollPane1);
-        jScrollPane1.setBounds(260, 0, 380, 400);
+        jScrollPane1.setBounds(260, 0, 260, 400);
 
         panelCrear.setVisible(false);
+        panelCrear.setLayout(null);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Nombre:");
+        panelCrear.add(jLabel5);
+        jLabel5.setBounds(6, 77, 53, 20);
 
         cname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cnameActionPerformed(evt);
             }
         });
+        panelCrear.add(cname);
+        cname.setBounds(71, 77, 156, 22);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Apellido:");
+        panelCrear.add(jLabel6);
+        jLabel6.setBounds(6, 105, 53, 20);
 
         csurname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 csurnameActionPerformed(evt);
             }
         });
+        panelCrear.add(csurname);
+        csurname.setBounds(71, 105, 156, 22);
 
         botonGuardarCrear.setText("Guardar");
+        botonGuardarCrear.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonGuardarCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGuardarCrearActionPerformed(evt);
             }
         });
+        panelCrear.add(botonGuardarCrear);
+        botonGuardarCrear.setBounds(6, 145, 80, 22);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Añadir nuevo Actor");
+        panelCrear.add(jLabel7);
+        jLabel7.setBounds(33, 6, 167, 25);
 
         botonVolverCrear.setText("Cancelar");
+        botonVolverCrear.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonVolverCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVolverCrearActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelCrearLayout = new javax.swing.GroupLayout(panelCrear);
-        panelCrear.setLayout(panelCrearLayout);
-        panelCrearLayout.setHorizontalGroup(
-            panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCrearLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addGroup(panelCrearLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(12, 12, 12)
-                        .addComponent(cname, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCrearLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(13, 13, 13)
-                        .addComponent(csurname, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel7)
-                    .addGroup(panelCrearLayout.createSequentialGroup()
-                        .addComponent(botonGuardarCrear)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonVolverCrear)))
-                .addContainerGap())
-        );
-        panelCrearLayout.setVerticalGroup(
-            panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCrearLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(cname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(csurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonGuardarCrear)
-                    .addComponent(botonVolverCrear))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        panelCrear.add(botonVolverCrear);
+        botonVolverCrear.setBounds(155, 145, 80, 22);
 
         jLayeredPane1.add(panelCrear);
-        panelCrear.setBounds(6, 6, 233, 170);
+        panelCrear.setBounds(6, 6, 233, 200);
 
         panelBorrar.setVisible(false);
+        panelBorrar.setLayout(null);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        panelBorrar.add(jLabel8);
+        jLabel8.setBounds(6, 77, 0, 0);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        panelBorrar.add(jLabel10);
+        jLabel10.setBounds(6, 83, 0, 0);
 
         botonBorrarBorrar.setText("Borrar");
+        botonBorrarBorrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonBorrarBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBorrarBorrarActionPerformed(evt);
             }
         });
+        panelBorrar.add(botonBorrarBorrar);
+        botonBorrarBorrar.setBounds(6, 145, 80, 22);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel11.setText("Borrar Actor");
+        panelBorrar.add(jLabel11);
+        jLabel11.setBounds(63, 6, 106, 25);
 
         botonVolverBorrar.setText("Cancelar");
+        botonVolverBorrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonVolverBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVolverBorrarActionPerformed(evt);
             }
         });
+        panelBorrar.add(botonVolverBorrar);
+        botonVolverBorrar.setBounds(155, 145, 80, 22);
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("ID:");
+        panelBorrar.add(jLabel12);
+        jLabel12.setBounds(6, 49, 53, 20);
 
         ciddel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ciddelActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelBorrarLayout = new javax.swing.GroupLayout(panelBorrar);
-        panelBorrar.setLayout(panelBorrarLayout);
-        panelBorrarLayout.setHorizontalGroup(
-            panelBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBorrarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, panelBorrarLayout.createSequentialGroup()
-                        .addComponent(botonBorrarBorrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonVolverBorrar))
-                    .addGroup(panelBorrarLayout.createSequentialGroup()
-                        .addGroup(panelBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ciddel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 154, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, panelBorrarLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel11)
-                        .addGap(44, 44, 44)))
-                .addContainerGap())
-        );
-        panelBorrarLayout.setVerticalGroup(
-            panelBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBorrarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11)
-                .addGap(18, 18, 18)
-                .addGroup(panelBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(ciddel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
-                .addGap(20, 20, 20)
-                .addGroup(panelBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonBorrarBorrar)
-                    .addComponent(botonVolverBorrar))
-                .addContainerGap(75, Short.MAX_VALUE))
-        );
+        panelBorrar.add(ciddel);
+        ciddel.setBounds(71, 49, 37, 22);
 
         jLayeredPane1.add(panelBorrar);
-        panelBorrar.setBounds(0, 6, 233, 200);
+        panelBorrar.setBounds(6, 6, 233, 200);
 
         getContentPane().add(jLayeredPane1);
-        jLayeredPane1.setBounds(134, 6, 810, 500);
+        jLayeredPane1.setBounds(134, 6, 530, 410);
 
         pack();
         setLocationRelativeTo(null);
