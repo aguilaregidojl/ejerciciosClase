@@ -7,7 +7,7 @@ import static JavaDB.DB.getConection;
 import java.awt.HeadlessException;
 import java.sql.*;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.*;
 
 /**
  *
@@ -15,9 +15,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CRUD extends javax.swing.JFrame {
     
+    Connection con;
+    PreparedStatement ps = null;
+    DefaultTableModel modelo;
+    Statement st;
+    ResultSet rs;
+    int id;
+    
     private void limpiarCajas() {
         cname.setText(null);
         csurname.setText(null);
+        cnameact.setText(null);
+        csurnameact.setText(null);
+        cidact.setText(null);
+        ciddel.setText(null);
     }
    
 
@@ -26,6 +37,7 @@ public class CRUD extends javax.swing.JFrame {
      */
     public CRUD() {
         initComponents();
+        this.modelo = (DefaultTableModel) TablaDatos.getModel();
         listar();
     }
 
@@ -44,16 +56,34 @@ public class CRUD extends javax.swing.JFrame {
         botonActualizar = new javax.swing.JButton();
         botonBorrar = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        panelCrear = new javax.swing.JPanel();
+        panelActualizar = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        cname = new javax.swing.JTextField();
+        cnameact = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        csurname = new javax.swing.JTextField();
-        botonGuardarCrear = new javax.swing.JButton();
+        csurnameact = new javax.swing.JTextField();
+        botonGuardarActualizar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        botonVolverCrear = new javax.swing.JButton();
+        botonVolverActualizar = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        cidact = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaDatos = new javax.swing.JTable();
+        panelCrear = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        cname = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        csurname = new javax.swing.JTextField();
+        botonGuardarCrear = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        botonVolverCrear = new javax.swing.JButton();
+        panelBorrar = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        botonBorrarBorrar = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        botonVolverBorrar = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        ciddel = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CRUD MySQL");
@@ -101,10 +131,143 @@ public class CRUD extends javax.swing.JFrame {
         getContentPane().add(Menu);
         Menu.setBounds(6, 6, 122, 120);
 
-        panelCrear.setVisible(false);
+        panelActualizar.setVisible(false);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Nombre:");
+
+        cnameact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cnameactActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Apellido:");
+
+        csurnameact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                csurnameactActionPerformed(evt);
+            }
+        });
+
+        botonGuardarActualizar.setText("Guardar");
+        botonGuardarActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActualizarActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setText("Actualizar Actor");
+
+        botonVolverActualizar.setText("Cancelar");
+        botonVolverActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActualizarActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setText("ID:");
+
+        cidact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cidactActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelActualizarLayout = new javax.swing.GroupLayout(panelActualizar);
+        panelActualizar.setLayout(panelActualizarLayout);
+        panelActualizarLayout.setHorizontalGroup(
+            panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActualizarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, panelActualizarLayout.createSequentialGroup()
+                        .addComponent(botonGuardarActualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonVolverActualizar))
+                    .addGroup(panelActualizarLayout.createSequentialGroup()
+                        .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(csurnameact, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cnameact, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cidact, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, panelActualizarLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel4)
+                        .addGap(44, 44, 44)))
+                .addContainerGap())
+        );
+
+        panelActualizarLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel9});
+
+        panelActualizarLayout.setVerticalGroup(
+            panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActualizarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(cidact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(cnameact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(csurnameact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonGuardarActualizar)
+                    .addComponent(botonVolverActualizar))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
+        jLayeredPane1.add(panelActualizar);
+        panelActualizar.setBounds(6, 6, 233, 200);
+
+        TablaDatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre", "Apellido"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TablaDatos);
+        if (TablaDatos.getColumnModel().getColumnCount() > 0) {
+            TablaDatos.getColumnModel().getColumn(0).setMinWidth(50);
+            TablaDatos.getColumnModel().getColumn(0).setPreferredWidth(50);
+            TablaDatos.getColumnModel().getColumn(0).setMaxWidth(50);
+        }
+
+        jLayeredPane1.add(jScrollPane1);
+        jScrollPane1.setBounds(260, 0, 380, 400);
+
+        panelCrear.setVisible(false);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setText("Nombre:");
 
         cname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,8 +275,8 @@ public class CRUD extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Apellido:");
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setText("Apellido:");
 
         csurname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,8 +291,8 @@ public class CRUD extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("Añadir nuevo Actor");
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setText("Añadir nuevo Actor");
 
         botonVolverCrear.setText("Cancelar");
         botonVolverCrear.addActionListener(new java.awt.event.ActionListener() {
@@ -146,14 +309,14 @@ public class CRUD extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(panelCrearLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(jLabel5)
                         .addGap(12, 12, 12)
                         .addComponent(cname, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelCrearLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(jLabel6)
                         .addGap(13, 13, 13)
                         .addComponent(csurname, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4)
+                    .addComponent(jLabel7)
                     .addGroup(panelCrearLayout.createSequentialGroup()
                         .addComponent(botonGuardarCrear)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -164,15 +327,15 @@ public class CRUD extends javax.swing.JFrame {
             panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCrearLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
                     .addComponent(cname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(csurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(panelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonGuardarCrear)
@@ -181,28 +344,93 @@ public class CRUD extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(panelCrear);
-        panelCrear.setBounds(6, 6, 237, 160);
+        panelCrear.setBounds(6, 6, 233, 170);
 
-        TablaDatos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        panelBorrar.setVisible(false);
 
-            },
-            new String [] {
-                "ID", "Nombre", "Apellido"
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
+        botonBorrarBorrar.setText("Borrar");
+        botonBorrarBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBorrarBorrarActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(TablaDatos);
-        if (TablaDatos.getColumnModel().getColumnCount() > 0) {
-            TablaDatos.getColumnModel().getColumn(0).setMinWidth(50);
-            TablaDatos.getColumnModel().getColumn(0).setPreferredWidth(50);
-            TablaDatos.getColumnModel().getColumn(0).setMaxWidth(50);
-        }
+        });
 
-        jLayeredPane1.add(jScrollPane1);
-        jScrollPane1.setBounds(260, 0, 600, 530);
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel11.setText("Borrar Actor");
+
+        botonVolverBorrar.setText("Cancelar");
+        botonVolverBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverBorrarActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel12.setText("ID:");
+
+        ciddel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ciddelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBorrarLayout = new javax.swing.GroupLayout(panelBorrar);
+        panelBorrar.setLayout(panelBorrarLayout);
+        panelBorrarLayout.setHorizontalGroup(
+            panelBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBorrarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, panelBorrarLayout.createSequentialGroup()
+                        .addComponent(botonBorrarBorrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonVolverBorrar))
+                    .addGroup(panelBorrarLayout.createSequentialGroup()
+                        .addGroup(panelBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ciddel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 154, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, panelBorrarLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel11)
+                        .addGap(44, 44, 44)))
+                .addContainerGap())
+        );
+        panelBorrarLayout.setVerticalGroup(
+            panelBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBorrarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addGap(18, 18, 18)
+                .addGroup(panelBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(ciddel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addGap(20, 20, 20)
+                .addGroup(panelBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonBorrarBorrar)
+                    .addComponent(botonVolverBorrar))
+                .addContainerGap(75, Short.MAX_VALUE))
+        );
+
+        jLayeredPane1.add(panelBorrar);
+        panelBorrar.setBounds(0, 6, 233, 200);
 
         getContentPane().add(jLayeredPane1);
-        jLayeredPane1.setBounds(134, 6, 864, 531);
+        jLayeredPane1.setBounds(134, 6, 810, 500);
 
         pack();
         setLocationRelativeTo(null);
@@ -210,19 +438,73 @@ public class CRUD extends javax.swing.JFrame {
 
     private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
         // TODO add your handling code here:
+        panelCrear.setVisible(false);
+        panelActualizar.setVisible(true);
+        panelBorrar.setVisible(false);
     }//GEN-LAST:event_botonActualizarActionPerformed
 
     private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
         // Botón Crear
         
         panelCrear.setVisible(true);
+        panelActualizar.setVisible(false);
+        panelBorrar.setVisible(false);
         
         
     }//GEN-LAST:event_botonCrearActionPerformed
 
     private void botonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarActionPerformed
-        // TODO add your handling code here:
+        // Botón Borrar
+        panelCrear.setVisible(false);
+        panelActualizar.setVisible(false);
+        panelBorrar.setVisible(true);
     }//GEN-LAST:event_botonBorrarActionPerformed
+
+    private void cnameactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnameactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cnameactActionPerformed
+
+    private void csurnameactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csurnameactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_csurnameactActionPerformed
+
+    private void botonGuardarActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActualizarActionPerformed
+        //Botón Crear en Actualizar
+        int actid = Integer.parseInt(cidact.getText());
+        String actname = cnameact.getText();
+        String actsurname = csurnameact.getText();
+        
+        try {
+            con = getConection();
+            ps = con.prepareStatement("UPDATE actor SET first_name='" +actname+"', last_name='" +actsurname+ "' WHERE actor_id='" +actid+"'");
+
+            int res = ps.executeUpdate();
+
+            if (res > 0) {
+                JOptionPane.showMessageDialog(null, "Actor actualizado");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al Actualizar Actor");
+            }
+            //TablaDatos.setModel(modelo);
+
+            limpiarCajas();
+            actutabla();
+            con.close();
+
+        } catch (HeadlessException | SQLException e) {
+            System.err.println(e);
+        }
+        
+    }//GEN-LAST:event_botonGuardarActualizarActionPerformed
+
+    private void botonVolverActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActualizarActionPerformed
+        // Botón Volver
+        limpiarCajas();
+        actutabla();
+        panelCrear.setVisible(false);
+        panelActualizar.setVisible(false);
+        panelBorrar.setVisible(false);
+    }//GEN-LAST:event_botonVolverActualizarActionPerformed
 
     private void cnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnameActionPerformed
         // TODO add your handling code here:
@@ -233,11 +515,8 @@ public class CRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_csurnameActionPerformed
 
     private void botonGuardarCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarCrearActionPerformed
-        // Botón Guardar en Crear
 
-        Connection con;
-        PreparedStatement ps = null;
-        DefaultTableModel modelo = (DefaultTableModel) TablaDatos.getModel();
+        // Botón Guardar en Crear
 
         try {
             con = getConection();
@@ -252,10 +531,10 @@ public class CRUD extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Error al Crear Actor");
             }
-            TablaDatos.setModel(modelo);
+            //TablaDatos.setModel(modelo);
 
             limpiarCajas();
-            modelo.fireTableDataChanged();
+            actutabla();
             con.close();
 
         } catch (HeadlessException | SQLException e) {
@@ -264,8 +543,57 @@ public class CRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_botonGuardarCrearActionPerformed
 
     private void botonVolverCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverCrearActionPerformed
-        // Botón Volver:
+        // Botón Volver
+        limpiarCajas();
+        actutabla();
+        panelCrear.setVisible(false);
+        panelActualizar.setVisible(false);
+        panelBorrar.setVisible(false);
     }//GEN-LAST:event_botonVolverCrearActionPerformed
+
+    private void cidactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cidactActionPerformed
+
+    private void botonBorrarBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarBorrarActionPerformed
+        //Botón Borrar en Borrar
+        
+        int actid = Integer.parseInt(ciddel.getText());
+        
+        try {
+            con = getConection();
+            ps = con.prepareStatement("DELETE FROM actor WHERE actor_id='" +actid+"'");
+
+            int res = ps.executeUpdate();
+
+            if (res > 0) {
+                JOptionPane.showMessageDialog(null, "Actor borrado");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al Borrar Actor");
+            }
+            //TablaDatos.setModel(modelo);
+
+            limpiarCajas();
+            actutabla();
+            con.close();
+
+        } catch (HeadlessException | SQLException e) {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_botonBorrarBorrarActionPerformed
+
+    private void botonVolverBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverBorrarActionPerformed
+        // Botón Volver
+        limpiarCajas();
+        actutabla();
+        panelCrear.setVisible(false);
+        panelActualizar.setVisible(false);
+        panelBorrar.setVisible(false);
+    }//GEN-LAST:event_botonVolverBorrarActionPerformed
+
+    private void ciddelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ciddelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ciddelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,11 +633,6 @@ public class CRUD extends javax.swing.JFrame {
     
         private void listar() {
 
-        Connection con;
-        Statement st;
-        DefaultTableModel modelo;
-        ResultSet rs;
-        int id;
         String sql = "SELECT * FROM actor";
         try {
             con = getConection();
@@ -328,23 +651,47 @@ public class CRUD extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
+        
+        public void actutabla() {
+        ((DefaultTableModel) TablaDatos.getModel()).setNumRows(0);
+        listar();
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Menu;
     private javax.swing.JTable TablaDatos;
     private javax.swing.JButton botonActualizar;
     private javax.swing.JButton botonBorrar;
+    private javax.swing.JButton botonBorrarBorrar;
     private javax.swing.JButton botonCrear;
+    private javax.swing.JButton botonGuardarActualizar;
     private javax.swing.JButton botonGuardarCrear;
+    private javax.swing.JButton botonVolverActualizar;
+    private javax.swing.JButton botonVolverBorrar;
     private javax.swing.JButton botonVolverCrear;
+    private javax.swing.JTextField cidact;
+    private javax.swing.JTextField ciddel;
     private javax.swing.JTextField cname;
+    private javax.swing.JTextField cnameact;
     private javax.swing.JTextField csurname;
+    private javax.swing.JTextField csurnameact;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panelActualizar;
+    private javax.swing.JPanel panelBorrar;
     private javax.swing.JPanel panelCrear;
     // End of variables declaration//GEN-END:variables
 }
