@@ -138,7 +138,7 @@ public class CRUD extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Nombre:");
         panelActualizar.add(jLabel3);
-        jLabel3.setBounds(6, 77, 53, 20);
+        jLabel3.setBounds(6, 77, 56, 20);
 
         cnameact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,7 +237,7 @@ public class CRUD extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Nombre:");
         panelCrear.add(jLabel5);
-        jLabel5.setBounds(6, 77, 53, 20);
+        jLabel5.setBounds(6, 77, 56, 20);
 
         cname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
