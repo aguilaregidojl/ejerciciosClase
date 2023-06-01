@@ -4,10 +4,23 @@
  */
 package Modelo;
 
+import lombok.Data;
+
 /**
  *
  * @author java
  */
+
+@Data
 public class Conexion {
+    
+    //Creamos las variables genéricas de la conexión
+    public String base;
+    public String user;
+    public String password;
+    public String url;
+    public String puerto;
+    
+    
     
 }
