@@ -35,7 +35,7 @@ class Cuadrados2 {
                 System.out.println();
             }
         }
-        
+
         if (k % 2 == 1) {
             for (a = 1; a <= k; a++) {
                 for (b = 1; b <= l; b++) {
