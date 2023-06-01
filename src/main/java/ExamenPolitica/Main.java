@@ -4,8 +4,6 @@
  */
 package ExamenPolitica;
 
-import java.util.Arrays;
-
 /**
  *
  * @author java
