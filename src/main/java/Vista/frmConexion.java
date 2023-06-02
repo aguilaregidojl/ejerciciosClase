@@ -10,7 +10,7 @@ import lombok.Data;
  *
  * @author java
  */
-@Data
+//@Data
 public class frmConexion extends javax.swing.JFrame {
 
     /**
@@ -56,11 +56,6 @@ public class frmConexion extends javax.swing.JFrame {
         jLabel5.setText("Contraseña:");
 
         txtIp.setText("localhost");
-        txtIp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIpActionPerformed(evt);
-            }
-        });
 
         txtPuerto.setText("3306");
 
@@ -70,11 +65,6 @@ public class frmConexion extends javax.swing.JFrame {
         jLabel6.setText("Datos Conexión");
 
         btnConectar.setText("Conectar");
-        btnConectar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConectarActionPerformed(evt);
-            }
-        });
 
         btnBorrarTodo.setText("Borrar todo");
 
@@ -150,14 +140,6 @@ public class frmConexion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtIpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIpActionPerformed
-
-    private void btnConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConectarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnConectarActionPerformed
 
     /**
      * @param args the command line arguments
