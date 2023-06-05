@@ -23,6 +23,21 @@
             <version>${jakartaee}</version>
             <scope>provided</scope>
         </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>4.5.3</version>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.netbeans.modules/org-netbeans-bootstrap -->
+        <dependency>
+            <groupId>org.netbeans.modules</groupId>
+            <artifactId>org-netbeans-bootstrap</artifactId>
+            <version>RELEASE180</version>
+        </dependency>
+
     </dependencies>
     
     <build>
