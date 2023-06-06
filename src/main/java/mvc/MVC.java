@@ -6,7 +6,7 @@ package mvc;
 
 import Controlador.Controlador;
 import Modelo.Conexion;
-import Vista.frmConexion;
+import Vista.Vista;
 
 /**
  *
@@ -14,12 +14,13 @@ import Vista.frmConexion;
  */
 public class MVC {
     public static void main (String[] args) {
-        Conexion conexion = new Conexion();
-        frmConexion frmcnx = new frmConexion();
+        Conexion mod = new Conexion();
+        Vista view = new Vista();
+        Controlador ctrl = new Controlador(view, mod);
         
-        Controlador ctrl = new Controlador(frmcnx, conexion);
+        
         ctrl.iniciar();
-        frmcnx.setVisible(true);
+        view.setVisible(true);
     }
     
 }

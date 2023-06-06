@@ -5,7 +5,7 @@
 package Controlador;
 
 import Modelo.Conexion;
-import Vista.frmConexion;
+import Vista.Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import lombok.Data;
@@ -17,8 +17,8 @@ import lombok.Data;
 @Data
 public class Controlador implements ActionListener {
 
-    private frmConexion frmcnx;
-    private Conexion conx;
+    private Vista view;
+    private Conexion model;
     /*public String ip;
     public String puerto;
     public String base;
@@ -26,27 +26,27 @@ public class Controlador implements ActionListener {
     public char[] password;
     public String pwd;*/
     
-    public Controlador(frmConexion frmcnx, Conexion conx) {
-        this.conx = conx;
-        this.frmcnx = frmcnx;
-        this.frmcnx.btnConectar.addActionListener(this);
-        this.frmcnx.btnBorrarTodo.addActionListener(this);
+    public Controlador(Vista view, Conexion model) {
+        this.model = model;
+        this.view = view;
+        this.view.btnConectar.addActionListener(this);
+        this.view.btnBorrarTodo.addActionListener(this);
     }
 
     public void iniciar() {
-        frmcnx.setTitle("Datos Conexión");
-        frmcnx.setLocationRelativeTo(null);
+        view.setTitle("Datos Conexión");
+        view.setLocationRelativeTo(null);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == frmcnx.btnConectar) {
-            conx.setUrl(frmcnx.txtIp.getText());
-            conx.setPuerto(frmcnx.txtPuerto.getText());
-            conx.setBase(frmcnx.txtNombreDb.getText());
-            conx.setUser(frmcnx.txtUsuario.getText());
-            conx.setPassword(frmcnx.txtPassword.getPassword());
+        if (e.getSource() == view.btnConectar) {
+            model.setUrl(view.txtIp.getText());
+            model.setPuerto(view.txtPuerto.getText());
+            model.setBase(view.txtNombreDb.getText());
+            model.setUser(view.txtUsuario.getText());
+            model.setPassword(view.txtPassword.getPassword());
             
             /*ip = frmcnx.txtIp.getText();
             puerto = frmcnx.txtPuerto.getText();
@@ -57,16 +57,16 @@ public class Controlador implements ActionListener {
 
         }
 
-        if (e.getSource() == frmcnx.btnBorrarTodo) {
+        if (e.getSource() == view.btnBorrarTodo) {
             limpiar();
         }
     }
 
     public void limpiar() {
-        frmcnx.txtIp.setText(null);
-        frmcnx.txtPuerto.setText(null);
-        frmcnx.txtNombreDb.setText(null);
-        frmcnx.txtUsuario.setText(null);
-        frmcnx.txtPassword.setText(null);
+        view.txtIp.setText(null);
+        view.txtPuerto.setText(null);
+        view.txtNombreDb.setText(null);
+        view.txtUsuario.setText(null);
+        view.txtPassword.setText(null);
     }
 }

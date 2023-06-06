@@ -28,6 +28,7 @@ public class Conexion {
     private Controlador cont;
     private Connection con;
     private String pwd = new String(password);
+    
 
     public Connection getConexion() {
         try {
