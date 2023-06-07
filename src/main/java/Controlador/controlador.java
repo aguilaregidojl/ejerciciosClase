@@ -45,6 +45,7 @@ public class controlador implements ActionListener {
     public void iniciar() {
         vista.setTitle("Prueba");
         vista.setLocationRelativeTo(null);
+        listar();
     }
     
     private void limpiarCajas() {
