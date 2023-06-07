@@ -132,10 +132,10 @@ public class Login_gestor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIngresogestor;
+    public javax.swing.JButton btnIngresogestor;
     private javax.swing.JLabel lblcontraseñagestor;
     private javax.swing.JLabel lblusuariogestor;
-    private javax.swing.JTextField testcontraseñagestor;
-    private javax.swing.JTextField textusuariogestor;
+    public javax.swing.JTextField testcontraseñagestor;
+    public javax.swing.JTextField textusuariogestor;
     // End of variables declaration//GEN-END:variables
 }

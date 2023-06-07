@@ -136,10 +136,10 @@ public class Login_cliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIngresocliente;
+    public javax.swing.JButton btnIngresocliente;
     private javax.swing.JLabel lblContraseñacliente;
     private javax.swing.JLabel lblUsuariocliente;
-    private javax.swing.JTextField textContraseñacliente;
-    private javax.swing.JTextField textUsuariocliente;
+    public javax.swing.JTextField textContraseñacliente;
+    public javax.swing.JTextField textUsuariocliente;
     // End of variables declaration//GEN-END:variables
 }

@@ -204,8 +204,8 @@ public class Cliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFinancieros;
-    private javax.swing.JButton btnInmobiliarios;
+    public javax.swing.JButton btnFinancieros;
+    public javax.swing.JButton btnInmobiliarios;
     private javax.swing.JTextField intBalance;
     private javax.swing.JTextField intCostes;
     private javax.swing.JTextField intIngresos;
