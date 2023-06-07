@@ -38,6 +38,10 @@ public class controlador implements ActionListener {
         //this.vista.jButton1.addActionListener(this);
     }
     
+    public controlador() {
+        
+    }
+    
     public void iniciar() {
         vista.setTitle("Prueba");
         vista.setLocationRelativeTo(null);
@@ -61,7 +65,7 @@ public class controlador implements ActionListener {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    private void listar() {
+    public void listar() {
 
         String sql = "SELECT * FROM Clientes";
         try {

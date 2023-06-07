@@ -5,10 +5,8 @@
 package Vista;
 
 import Controlador.controlador;
-import static Modelo.conexion.getConection;
-import java.awt.HeadlessException;
-import java.sql.*;
-import javax.swing.JOptionPane;
+import Modelo.clientes;
+import Modelo.conexion;
 import javax.swing.table.*;
 
 /**
@@ -17,14 +15,14 @@ import javax.swing.table.*;
  */
 public class vistaClientes extends javax.swing.JFrame {
 
-    DefaultTableModel modelo;
+    DefaultTableModel modelotabla;
 
     /**
      * Creates new form CRUD
      */
     public vistaClientes() {
         initComponents();
-        this.modelo = (DefaultTableModel) TablaDatos.getModel();
+        this.modelotabla = (DefaultTableModel) TablaDatos.getModel();
         //listar();
     }
 
