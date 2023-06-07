@@ -7,6 +7,7 @@ package Main;
 import Controlador.controlador;
 import Modelo.clientes;
 import Modelo.conexion;
+import Swing.tablaClientes;
 import Vista.vistaClientes;
 
 /**
@@ -19,10 +20,12 @@ public class main {
         conexion conexion = new conexion();
         clientes clientes = new clientes();
         vistaClientes vista = new vistaClientes();
+        
 
         controlador controlador = new controlador(vista, conexion, clientes);
         controlador.iniciar();
         vista.setVisible(true);
+        
         
         
         

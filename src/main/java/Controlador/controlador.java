@@ -84,4 +84,6 @@ public class controlador implements ActionListener {
         }
     }
     
+
+    
 }

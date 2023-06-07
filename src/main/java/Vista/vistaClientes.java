@@ -17,10 +17,16 @@ import javax.swing.table.*;
  */
 public class vistaClientes extends javax.swing.JFrame {
 
+    DefaultTableModel modelo;
+
     /**
      * Creates new form CRUD
      */
-  
+    public vistaClientes() {
+        initComponents();
+        this.modelo = (DefaultTableModel) TablaDatos.getModel();
+        //listar();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -466,9 +472,6 @@ public class vistaClientes extends javax.swing.JFrame {
         });
     }
 
-    
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Menu;
