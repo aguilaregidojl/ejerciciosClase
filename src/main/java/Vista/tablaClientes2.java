@@ -130,11 +130,6 @@ public class tablaClientes2 extends javax.swing.JFrame {
 
         botonGuardarActualizar.setText("Guardar");
         botonGuardarActualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonGuardarActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGuardarActualizarActionPerformed(evt);
-            }
-        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -142,32 +137,15 @@ public class tablaClientes2 extends javax.swing.JFrame {
 
         botonVolverActualizar.setText("Cancelar");
         botonVolverActualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonVolverActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVolverActualizarActionPerformed(evt);
-            }
-        });
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("ID:");
-
-        cidact.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cidactActionPerformed(evt);
-            }
-        });
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel15.setText("Telefono");
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel16.setText("DNI");
-
-        acttelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                acttelefonoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout panelActualizarLayout = new javax.swing.GroupLayout(panelActualizar);
         panelActualizar.setLayout(panelActualizarLayout);
@@ -253,32 +231,16 @@ public class tablaClientes2 extends javax.swing.JFrame {
 
         botonBorrarBorrar.setText("Borrar");
         botonBorrarBorrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonBorrarBorrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonBorrarBorrarActionPerformed(evt);
-            }
-        });
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel11.setText("Borrar Cliente");
 
         botonVolverBorrar.setText("Cancelar");
         botonVolverBorrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonVolverBorrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVolverBorrarActionPerformed(evt);
-            }
-        });
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("ID:");
-
-        ciddel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ciddelActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout panelBorrarLayout = new javax.swing.GroupLayout(panelBorrar);
         panelBorrar.setLayout(panelBorrarLayout);
@@ -336,28 +298,11 @@ public class tablaClientes2 extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Nombre:");
 
-        cname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cnameActionPerformed(evt);
-            }
-        });
-
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Apellido:");
 
-        csurname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                csurnameActionPerformed(evt);
-            }
-        });
-
         botonGuardarCrear.setText("Guardar");
         botonGuardarCrear.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonGuardarCrear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGuardarCrearActionPerformed(evt);
-            }
-        });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -365,23 +310,12 @@ public class tablaClientes2 extends javax.swing.JFrame {
 
         botonVolverCrear.setText("Cancelar");
         botonVolverCrear.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonVolverCrear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVolverCrearActionPerformed(evt);
-            }
-        });
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Teléfono:");
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText("DNI:");
-
-        cdni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cdniActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout panelCrearLayout = new javax.swing.GroupLayout(panelCrear);
         panelCrear.setLayout(panelCrearLayout);
@@ -492,142 +426,6 @@ public class tablaClientes2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_csurnameactActionPerformed
 
-    private void botonGuardarActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActualizarActionPerformed
-        //Botón Crear en Actualizar
-        int actid = Integer.parseInt(cidact.getText());
-        String actname = cnameact.getText();
-        String actsurname = csurnameact.getText();
-
-        try {
-            con = getConection();
-            ps = con.prepareStatement("UPDATE Clientes SET nombre='" + actname + "', apellidos='" + actsurname + "', telefono='" + ctelefono + "', dni='" + actdni + "' WHERE idClientes='" + actid + "'");
-
-            int res = ps.executeUpdate();
-
-            if (res > 0) {
-                JOptionPane.showMessageDialog(null, "Cliente actualizado");
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al Actualizar Cliente");
-            }
-            //TablaDatos.setModel(modelo);
-
-            limpiarCajas();
-            actutabla();
-            con.close();
-
-        } catch (HeadlessException | SQLException e) {
-            System.err.println(e);
-        }
-
-    }//GEN-LAST:event_botonGuardarActualizarActionPerformed
-
-    private void botonVolverActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActualizarActionPerformed
-        // Botón Volver
-        limpiarCajas();
-        actutabla();
-        panelCrear.setVisible(false);
-        panelActualizar.setVisible(false);
-        panelBorrar.setVisible(false);
-    }//GEN-LAST:event_botonVolverActualizarActionPerformed
-
-    private void cnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cnameActionPerformed
-
-    private void csurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csurnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_csurnameActionPerformed
-
-    private void botonGuardarCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarCrearActionPerformed
-
-        // Botón Guardar en Crear
-        try {
-            con = getConection();
-            ps = con.prepareStatement("INSERT INTO Clientes (nombre, apellidos, telefono, dni) VALUES(?,?,?,?) ");
-            ps.setString(1, cname.getText());
-            ps.setString(2, csurname.getText());
-            ps.setString(3, ctelefono.getText());
-            ps.setString(4, cdni.getText());
-
-            int res = ps.executeUpdate();
-
-            if (res > 0) {
-                JOptionPane.showMessageDialog(null, "Cliente guardado");
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al Crear Cliente");
-            }
-            //TablaDatos.setModel(modelo);
-
-            limpiarCajas();
-            actutabla();
-            con.close();
-
-        } catch (HeadlessException | SQLException e) {
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_botonGuardarCrearActionPerformed
-
-    private void botonVolverCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverCrearActionPerformed
-        // Botón Volver
-        limpiarCajas();
-        actutabla();
-        panelCrear.setVisible(false);
-        panelActualizar.setVisible(false);
-        panelBorrar.setVisible(false);
-    }//GEN-LAST:event_botonVolverCrearActionPerformed
-
-    private void cidactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidactActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cidactActionPerformed
-
-    private void botonBorrarBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarBorrarActionPerformed
-        //Botón Borrar en Borrar
-
-        int actid = Integer.parseInt(ciddel.getText());
-
-        try {
-            con = getConection();
-            ps = con.prepareStatement("DELETE FROM Clientes WHERE idClientes='" + actid + "'");
-
-            int res = ps.executeUpdate();
-
-            if (res > 0) {
-                JOptionPane.showMessageDialog(null, "Cliente borrado");
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al Borrar Cliente");
-            }
-            //TablaDatos.setModel(modelo);
-
-            limpiarCajas();
-            actutabla();
-            con.close();
-
-        } catch (HeadlessException | SQLException e) {
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_botonBorrarBorrarActionPerformed
-
-    private void botonVolverBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverBorrarActionPerformed
-        // Botón Volver
-        limpiarCajas();
-        actutabla();
-        panelCrear.setVisible(false);
-        panelActualizar.setVisible(false);
-        panelBorrar.setVisible(false);
-    }//GEN-LAST:event_botonVolverBorrarActionPerformed
-
-    private void ciddelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ciddelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ciddelActionPerformed
-
-    private void cdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdniActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cdniActionPerformed
-
-    private void acttelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acttelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_acttelefonoActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -698,26 +496,26 @@ public class tablaClientes2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Menu;
-    private javax.swing.JTable TablaDatos;
-    private javax.swing.JTextField actdni;
-    private javax.swing.JTextField acttelefono;
+    public javax.swing.JTable TablaDatos;
+    public javax.swing.JTextField actdni;
+    public javax.swing.JTextField acttelefono;
     public javax.swing.JButton botonActualizar;
     public javax.swing.JButton botonBorrar;
-    javax.swing.JButton botonBorrarBorrar;
+    public javax.swing.JButton botonBorrarBorrar;
     public javax.swing.JButton botonCrear;
-    javax.swing.JButton botonGuardarActualizar;
-    javax.swing.JButton botonGuardarCrear;
-    javax.swing.JButton botonVolverActualizar;
-    javax.swing.JButton botonVolverBorrar;
-    javax.swing.JButton botonVolverCrear;
-    private javax.swing.JTextField cdni;
-    private javax.swing.JTextField cidact;
-    private javax.swing.JTextField ciddel;
-    private javax.swing.JTextField cname;
-    private javax.swing.JTextField cnameact;
-    private javax.swing.JTextField csurname;
-    private javax.swing.JTextField csurnameact;
-    private javax.swing.JTextField ctelefono;
+    public javax.swing.JButton botonGuardarActualizar;
+    public javax.swing.JButton botonGuardarCrear;
+    public javax.swing.JButton botonVolverActualizar;
+    public javax.swing.JButton botonVolverBorrar;
+    public javax.swing.JButton botonVolverCrear;
+    public javax.swing.JTextField cdni;
+    public javax.swing.JTextField cidact;
+    public javax.swing.JTextField ciddel;
+    public javax.swing.JTextField cname;
+    public javax.swing.JTextField cnameact;
+    public javax.swing.JTextField csurname;
+    public javax.swing.JTextField csurnameact;
+    public javax.swing.JTextField ctelefono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
