@@ -20,4 +20,6 @@ public class clientes {
     private String apellidos;
     private int telefono;
     private int dni;
+    
+    
 }

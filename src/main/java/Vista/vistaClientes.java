@@ -15,7 +15,7 @@ import javax.swing.table.*;
  *
  * @author java
  */
-public class tablaClientes2 extends javax.swing.JFrame {
+public class vistaClientes extends javax.swing.JFrame {
 
     /**
      * Creates new form CRUD
@@ -78,6 +78,7 @@ public class tablaClientes2 extends javax.swing.JFrame {
         setTitle("CRUD MySQL");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocation(new java.awt.Point(0, 0));
+        setPreferredSize(new java.awt.Dimension(733, 478));
         getContentPane().setLayout(null);
 
         jLabel1.setText("¿Qué quieres hacer?");
@@ -439,14 +440,18 @@ public class tablaClientes2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(tablaClientes2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(tablaClientes2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(tablaClientes2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(tablaClientes2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -455,7 +460,7 @@ public class tablaClientes2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tablaClientes2().setVisible(true);
+                new vistaClientes().setVisible(true);
             }
 
         });
