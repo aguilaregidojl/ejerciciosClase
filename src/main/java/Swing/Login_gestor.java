@@ -56,11 +56,6 @@ public class Login_gestor extends javax.swing.JFrame {
         btnIngresogestor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnIngresogestor.setText("Ingreso");
         btnIngresogestor.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnIngresogestor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresogestorActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,17 +84,13 @@ public class Login_gestor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblcontraseñagestor)
                     .addComponent(testcontraseñagestor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(btnIngresogestor)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnIngresogestorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresogestorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnIngresogestorActionPerformed
 
     private void testcontraseñagestorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testcontraseñagestorActionPerformed
         // TODO add your handling code here:
