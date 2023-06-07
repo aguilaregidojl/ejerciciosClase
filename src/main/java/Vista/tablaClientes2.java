@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Swing;
+package Vista;
+
+import Controlador.controlador;
 import static Modelo.conexion.getConection;
 import java.awt.HeadlessException;
 import java.sql.*;
@@ -13,35 +15,14 @@ import javax.swing.table.*;
  *
  * @author java
  */
-public class tablaClientes extends javax.swing.JFrame {
-    
-    Connection con;
-    PreparedStatement ps = null;
-    DefaultTableModel modelo;
-    Statement st;
-    ResultSet rs;
-    int id;
-    
-    private void limpiarCajas() {
-        cname.setText(null);
-        csurname.setText(null);
-        cnameact.setText(null);
-        csurnameact.setText(null);
-        cidact.setText(null);
-        ciddel.setText(null);
-        ctelefono.setText(null);
-        cdni.setText(null);
-        acttelefono.setText(null);
-        actdni.setText(null);
-    }
-   
+public class tablaClientes2 extends javax.swing.JFrame {
 
     /**
      * Creates new form CRUD
      */
-    public tablaClientes() {
+    public tablaClientes2() {
         initComponents();
-        this.modelo = (DefaultTableModel) TablaDatos.getModel();
+        //controlador.modelotabla = (DefaultTableModel) TablaDatos.getModel();
         listar();
     }
 
@@ -101,7 +82,6 @@ public class tablaClientes extends javax.swing.JFrame {
         setTitle("CRUD MySQL");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocation(new java.awt.Point(0, 0));
-        setPreferredSize(new java.awt.Dimension(731, 475));
         getContentPane().setLayout(null);
 
         jLabel1.setText("¿Qué quieres hacer?");
@@ -111,33 +91,18 @@ public class tablaClientes extends javax.swing.JFrame {
         botonCrear.setMaximumSize(new java.awt.Dimension(83, 22));
         botonCrear.setMinimumSize(new java.awt.Dimension(83, 22));
         botonCrear.setPreferredSize(new java.awt.Dimension(83, 22));
-        botonCrear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCrearActionPerformed(evt);
-            }
-        });
         Menu.add(botonCrear);
 
         botonActualizar.setText("Actualizar");
         botonActualizar.setMaximumSize(new java.awt.Dimension(83, 22));
         botonActualizar.setMinimumSize(new java.awt.Dimension(83, 22));
         botonActualizar.setPreferredSize(new java.awt.Dimension(83, 22));
-        botonActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonActualizarActionPerformed(evt);
-            }
-        });
         Menu.add(botonActualizar);
 
         botonBorrar.setText("Borrar");
         botonBorrar.setMaximumSize(new java.awt.Dimension(83, 22));
         botonBorrar.setMinimumSize(new java.awt.Dimension(83, 22));
         botonBorrar.setPreferredSize(new java.awt.Dimension(83, 22));
-        botonBorrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonBorrarActionPerformed(evt);
-            }
-        });
         Menu.add(botonBorrar);
 
         getContentPane().add(Menu);
@@ -519,30 +484,6 @@ public class tablaClientes extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
-        // TODO add your handling code here:
-        panelCrear.setVisible(false);
-        panelActualizar.setVisible(true);
-        panelBorrar.setVisible(false);
-    }//GEN-LAST:event_botonActualizarActionPerformed
-
-    private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
-        // Botón Crear
-        
-        panelCrear.setVisible(true);
-        panelActualizar.setVisible(false);
-        panelBorrar.setVisible(false);
-        
-        
-    }//GEN-LAST:event_botonCrearActionPerformed
-
-    private void botonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarActionPerformed
-        // Botón Borrar
-        panelCrear.setVisible(false);
-        panelActualizar.setVisible(false);
-        panelBorrar.setVisible(true);
-    }//GEN-LAST:event_botonBorrarActionPerformed
-
     private void cnameactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnameactActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cnameactActionPerformed
@@ -556,10 +497,10 @@ public class tablaClientes extends javax.swing.JFrame {
         int actid = Integer.parseInt(cidact.getText());
         String actname = cnameact.getText();
         String actsurname = csurnameact.getText();
-        
+
         try {
             con = getConection();
-            ps = con.prepareStatement("UPDATE Clientes SET nombre='" +actname+"', apellidos='" +actsurname+ "', telefono='" +ctelefono+ "', dni='" + actdni+ "' WHERE idClientes='" +actid+"'");
+            ps = con.prepareStatement("UPDATE Clientes SET nombre='" + actname + "', apellidos='" + actsurname + "', telefono='" + ctelefono + "', dni='" + actdni + "' WHERE idClientes='" + actid + "'");
 
             int res = ps.executeUpdate();
 
@@ -577,7 +518,7 @@ public class tablaClientes extends javax.swing.JFrame {
         } catch (HeadlessException | SQLException e) {
             System.err.println(e);
         }
-        
+
     }//GEN-LAST:event_botonGuardarActualizarActionPerformed
 
     private void botonVolverActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActualizarActionPerformed
@@ -600,7 +541,6 @@ public class tablaClientes extends javax.swing.JFrame {
     private void botonGuardarCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarCrearActionPerformed
 
         // Botón Guardar en Crear
-
         try {
             con = getConection();
             ps = con.prepareStatement("INSERT INTO Clientes (nombre, apellidos, telefono, dni) VALUES(?,?,?,?) ");
@@ -608,7 +548,6 @@ public class tablaClientes extends javax.swing.JFrame {
             ps.setString(2, csurname.getText());
             ps.setString(3, ctelefono.getText());
             ps.setString(4, cdni.getText());
-            
 
             int res = ps.executeUpdate();
 
@@ -643,12 +582,12 @@ public class tablaClientes extends javax.swing.JFrame {
 
     private void botonBorrarBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarBorrarActionPerformed
         //Botón Borrar en Borrar
-        
+
         int actid = Integer.parseInt(ciddel.getText());
-        
+
         try {
             con = getConection();
-            ps = con.prepareStatement("DELETE FROM Clientes WHERE idClientes='" +actid+"'");
+            ps = con.prepareStatement("DELETE FROM Clientes WHERE idClientes='" + actid + "'");
 
             int res = ps.executeUpdate();
 
@@ -706,27 +645,29 @@ public class tablaClientes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(tablaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tablaClientes2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(tablaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tablaClientes2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(tablaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tablaClientes2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(tablaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tablaClientes2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tablaClientes().setVisible(true);
+                new tablaClientes2().setVisible(true);
             }
-            
+
         });
     }
-    
-        private void listar() {
+
+    private void listar() {
 
         String sql = "SELECT * FROM Clientes";
         try {
@@ -734,7 +675,7 @@ public class tablaClientes extends javax.swing.JFrame {
             st = con.createStatement();
             rs = st.executeQuery(sql);
             Object[] clientes = new Object[5];
-            modelo = (DefaultTableModel) TablaDatos.getModel();
+            modelotabla = (DefaultTableModel) TablaDatos.getModel();
 
             while (rs.next()) {
                 clientes[0] = rs.getInt("idClientes");
@@ -742,17 +683,17 @@ public class tablaClientes extends javax.swing.JFrame {
                 clientes[2] = rs.getString("apellidos");
                 clientes[3] = rs.getInt("telefono");
                 clientes[4] = rs.getInt("dni");
-                modelo.addRow(clientes);
+                modelotabla.addRow(clientes);
             }
-            TablaDatos.setModel(modelo);
+            TablaDatos.setModel(modelotabla);
         } catch (Exception e) {
         }
     }
-        
-        public void actutabla() {
+
+    public void actutabla() {
         ((DefaultTableModel) TablaDatos.getModel()).setNumRows(0);
         listar();
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -760,15 +701,15 @@ public class tablaClientes extends javax.swing.JFrame {
     private javax.swing.JTable TablaDatos;
     private javax.swing.JTextField actdni;
     private javax.swing.JTextField acttelefono;
-    private javax.swing.JButton botonActualizar;
-    private javax.swing.JButton botonBorrar;
-    private javax.swing.JButton botonBorrarBorrar;
-    private javax.swing.JButton botonCrear;
-    private javax.swing.JButton botonGuardarActualizar;
-    private javax.swing.JButton botonGuardarCrear;
-    private javax.swing.JButton botonVolverActualizar;
-    private javax.swing.JButton botonVolverBorrar;
-    private javax.swing.JButton botonVolverCrear;
+    public javax.swing.JButton botonActualizar;
+    public javax.swing.JButton botonBorrar;
+    javax.swing.JButton botonBorrarBorrar;
+    public javax.swing.JButton botonCrear;
+    javax.swing.JButton botonGuardarActualizar;
+    javax.swing.JButton botonGuardarCrear;
+    javax.swing.JButton botonVolverActualizar;
+    javax.swing.JButton botonVolverBorrar;
+    javax.swing.JButton botonVolverCrear;
     private javax.swing.JTextField cdni;
     private javax.swing.JTextField cidact;
     private javax.swing.JTextField ciddel;

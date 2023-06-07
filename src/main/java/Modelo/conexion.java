@@ -12,7 +12,7 @@ import java.sql.SQLException;
  *
  * @author java
  */
-public class modelo {
+public class conexion {
     
     public static Connection getConection() throws SQLException {
         Connection con = null;
@@ -31,7 +31,6 @@ public class modelo {
         }
         return con;
     }
-
 }
     
 
