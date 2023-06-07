@@ -20,6 +20,8 @@ public class modelo {
         String url = "jdbc:mysql://www.db4free.net:3306/" + base; //Direccion, puerto y nombre de la Base de Datos
         String user = "grupo2dicampus"; //Usuario de Acceso a MySQL
         String password = "grupo2dicampus"; //Password del usuario
+        
+        //Ahora un try catch
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
