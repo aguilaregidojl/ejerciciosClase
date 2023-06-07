@@ -20,11 +20,7 @@ public class tablaClientes2 extends javax.swing.JFrame {
     /**
      * Creates new form CRUD
      */
-    public tablaClientes2() {
-        initComponents();
-        //controlador.modelotabla = (DefaultTableModel) TablaDatos.getModel();
-        listar();
-    }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -465,34 +461,9 @@ public class tablaClientes2 extends javax.swing.JFrame {
         });
     }
 
-    private void listar() {
+    
 
-        String sql = "SELECT * FROM Clientes";
-        try {
-            con = getConection();
-            st = con.createStatement();
-            rs = st.executeQuery(sql);
-            Object[] clientes = new Object[5];
-            modelotabla = (DefaultTableModel) TablaDatos.getModel();
-
-            while (rs.next()) {
-                clientes[0] = rs.getInt("idClientes");
-                clientes[1] = rs.getString("nombre");
-                clientes[2] = rs.getString("apellidos");
-                clientes[3] = rs.getInt("telefono");
-                clientes[4] = rs.getInt("dni");
-                modelotabla.addRow(clientes);
-            }
-            TablaDatos.setModel(modelotabla);
-        } catch (Exception e) {
-        }
-    }
-
-    public void actutabla() {
-        ((DefaultTableModel) TablaDatos.getModel()).setNumRows(0);
-        listar();
-
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Menu;
