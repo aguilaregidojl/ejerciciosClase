@@ -470,7 +470,7 @@ public class tablaClientes extends javax.swing.JFrame {
             }
         });
         panelBorrar.add(ciddel);
-        ciddel.setBounds(71, 49, 37, 22);
+        ciddel.setBounds(71, 49, 37, 20);
 
         jLayeredPane1.add(panelBorrar);
         panelBorrar.setBounds(6, 6, 233, 200);
