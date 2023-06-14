@@ -13,7 +13,8 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-
+        
+        //Declaramos los dos ArrayList
         ArrayList<Persona> personas = new ArrayList<>();
         ArrayList<Empleado> empleados = new ArrayList<>();
 
@@ -58,11 +59,12 @@ public class Main {
         for (Persona persona : personas) {
             System.out.println(persona.getNombre());
         }
-        
+
+        //Imprimimos un par de líneas en blanco para separar ambos prints.
         System.out.println("");
         System.out.println("");
 
-        // Imprimir el resultado
+        // Imprimimos el resultado de Empleados
         System.out.println("(Merge Sort) Empleados ordenados por nombre:");
         for (Empleado empleado : empleados) {
             System.out.println(empleado.getNombre());
@@ -84,14 +86,14 @@ public class Main {
     }
 
     // Método de ordenamiento por merge
-    public static void ordenMezcla(ArrayList<Empleado> arr) {
+    private static void ordenMezcla(ArrayList<Empleado> arr) {
         if (arr.size() < 2) {
             return;
         }
 
-        int mid = arr.size() / 2;
-        ArrayList<Empleado> izquierda = new ArrayList<>(arr.subList(0, mid));
-        ArrayList<Empleado> derecha = new ArrayList<>(arr.subList(mid, arr.size()));
+        int mitad = arr.size() / 2;
+        ArrayList<Empleado> izquierda = new ArrayList<>(arr.subList(0, mitad));
+        ArrayList<Empleado> derecha = new ArrayList<>(arr.subList(mitad, arr.size()));
 
         ordenMezcla(izquierda);
         ordenMezcla(derecha);
@@ -99,6 +101,7 @@ public class Main {
         mezcla(arr, izquierda, derecha);
     }
 
+    //Volvemos a unir ambos array para formar el array ordenado.
     private static void mezcla(ArrayList<Empleado> arr, ArrayList<Empleado> izquierda, ArrayList<Empleado> derecha) {
         int i = 0, j = 0, k = 0;
 

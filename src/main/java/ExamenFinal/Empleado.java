@@ -15,11 +15,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class Empleado {
 
+    //Atributos
     String nombre;
     Integer salario;
     String puesto;
-
-    
-    
 
 }
