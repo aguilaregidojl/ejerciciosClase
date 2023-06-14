@@ -24,7 +24,7 @@ public class zPruebaDB {
 
     try {
         connection = DriverManager
-                .getConnection("jdbc:mysql://localhost:3306/sakila", "root", "");
+                .getConnection("jdbc:mysql://www.db4free.net:3306/fortuna", "dicampus", "caraluisss");
     } catch (SQLException e) {
         for(Throwable ex : e) {
             System.err.println("Error occurred " + ex);
